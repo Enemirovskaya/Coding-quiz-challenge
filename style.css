@@ -1,3 +1,94 @@
+
 *{
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+
+}
+button{
+    color: lightskyblue;
+    background-color: purple;
+    border-radius: 10% ;
+    cursor: pointer;
+}
+/* h1{
+    font-family:Arial, Helvetica, sans-serif;  
+    color: purple; 
+}
+h2{
+    font-family:Arial, Helvetica, sans-serif;
+    color: purple;
+} */
+section{
+    font-family:Arial, Helvetica, sans-serif;
+    color: purple; 
+    
+}
+.top-box{
+    padding: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.p1{
+color: purple;
+font-family: sans-serif;
+}
+.timer{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.p2{
+    font-family: sans-serif
+    }
+.bottom-box{
+    /* display:flex;
+    justify-content: center;
+    flex-direction: column; */
+    margin-top: 10%;
+    margin-left: 25%;
+    width: 50%;
+}
+header{
+    color: purple;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    display: none
+}
+#start-quiz{
+    color: lightskyblue;
+    background-color: purple;
+    margin: 20px;
+    border-radius: 10% ;
+    
+}
+ul{
+    font-family:Arial, Helvetica, sans-serif;
+    list-style-type: none;
+}
+
+.questions{
+    display: none;
+}
+.answers{
+    padding-bottom: 5px;
+}
+
+.answer-result p{
+    padding-top: 5px;
+    border-top: 2px solid lightgray;
+}
+.finish-quiz{
+    font-family:Arial, Helvetica, sans-serif;
+    display: none;
+}
+.show-highscores{
+    /* display: none; */
+}
+.show-highscores, ol{
+    border: 2px lightgray;
+    padding: 2px;
 }
