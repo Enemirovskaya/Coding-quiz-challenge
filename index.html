@@ -8,63 +8,15 @@
     <title>Coding-Quiz-Challenge</title>
 </head>
 <body>
-    <!-- Outside box that takes entire screen -->
-    <div class="outside-box">
-        <!-- First child of outside box where score and timer are situated in-->
-        <div class="top-box">
-            <p class="p1">View highscores</p>
-            <div class="timer">
-                <p class="p2">Timer</p> 
-                <div>00:00</div>
-            </div>
-        </div>
-        <!-- The second child of outside box where quiz itself is -->
-        <div class="bottom-box">
-            <header>
-                <h1 id="quiz">Coding Quiz Challenge</h1>
-               <p>This quiz is about your knowelege. You will have 
-                 60 seconds to complete the test.
-                 Please click the button below to begin the quiz. </p>
-                <button id="start-quiz">
-                    Start Quiz
-                </button>
-            </header>
-            <main>
-            <!-- Section where questions will be asked -->
-                <section class="questions" id="questions-section">
-                    <h2 id="question" class="question">Question</h2>
-                    <ul class="answers">
-                        <li><button></button></li>
-                        <li><button></button></li>
-                        <li><button></button></li>
-                        <li><button></button></li>
-                    </ul>
-                    <footer id="result" class="answer-result">
-                        <p>Wrong</p>
-                    </footer>
-                </section>
-            <!-- Section where user prompted to enter enitials -->
-                <section class="finish-quiz" id="finished-section">
-                    <h2 id="quiz-complete">Quiz Complete!</h2>
-                    <p>Your final score: 0</p>
-                    <div id="score-entry" class="score-entry">
-                        <label for="">Enter initials:</label>
-                        <input type="text" placeholder="initials">
-                        <button class="submit">Submit</button>
-                    </div>
-                </section>
-            <!-- Section where scores are shown -->
-                <section  id="show-highscore" class="show-highscores">
-                    <h2 id="highscores-title">Highscores:</h2>
-                    <ol>
-                        <li></li>
-                    </ol>
-                    <button id="go-back" class="go-back-btn">Go back</button>
-                    <button id="clear-scores" class="clear-scores-btn" >Clear scores</button>
-                </section>
-            
-            </main>
-
+    <a href="HighScores.html">View Highscores</a>
+    <!-- Outter box -->
+    <div id="outterBox">
+        <div id="time"></div>
+        <div id="questionBox">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Please answer the quiz questions.</p>
+             <ul id="choices"></ul>
+             <button id="startQuiz">Start Quiz</button>
         </div>
     </div>
     <script src="./script.js"></script>

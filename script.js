@@ -1,26 +1,201 @@
-var questionOne = ['How do you write "Hello world" in an alert-box?'];
-var answerOne = ['a. alertBox("Hello World")', 'b. alert("Hello World")', 'c. msg("Hello World")', 'd. msgBox("Hello World")'];
+var topBox = document.getElementById("outterBox");
+var startQuiz = document.getElementbyId("startQuiz");
+var questionBox = document.getElementById("questionsBox");
 
-var questionTwo = ['How to write an IF statment?'];
-var answerTwo = ['a. if i=5 then', 'b. if i==5 then', 'c. if (i==5)', 'd. if i=5'];
+var finishedSection = document.getElementById("finished-section");
+var showScore = documrnt.getElementById("show-highscore");
 
-var questionThree = ['Inside which HTML element do we put the Java Script?'];
-var answerTwo = ['a. <Js>', 'b. <scripting>', 'c. <script>', 'd. <javascript>'];
+var elementUl = document.createElement("ul");
 
-var questionFour = ['Where is correct place to insert a JavaScript?'];
-var answerFour = ['a. <head> & <body>','b. the <body> section','c. the <head> section','d. in <footer>'];
+var score = 0;
+var questionCount = 0;
 
-var questionFive = ['Which of the following is an example of an array?'];
-var answerFive = ['a. var = array()', 'b. var = array{}', 'c. var = array[]', 'd. var = array<>'];
+var time = document.querySelector("time");
+var timer = document.querySelector("#startQuiz");
+var questionBox = document.querySelector("#questionBox");
+var outterBox = document.querySelector("#outterBox");
 
-var allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
+var timeLeft = 76;
+var penalty = 10;
+var interval = 0;
 
-const start_quiz_btn = document.querySelector('.bottom-box');
-const submit_btn = document.querySelector('.questions');
-const go_back_btn = document.querySelector('.finish-quiz');
-const clear_scores_btn = document.querySelector('.show-highscores');
+// const go_back_btn = document.querySelector('.finish-quiz');
+// const clear_scores_btn = document.querySelector('.show-highscores');
 
-start_quiz_btn.addEventListener('click', function(){submit_btn.display} )
-function(questionsSection){
+//Questions and answers
+var questions =[
+{
+    title: "How do you write 'Hello world' in an alert-box?",
+    choices: 
+    ["alertBox('Hello World')",
+     "alert('Hello World')",
+     "msg('Hello World')", 
+     "msgBox('Hello World')"],
+     answer: "alert('Hello World')"
+},
+{
+    title:"How to write an IF statment?",
+    choices: [
+    "if i=5 then", 
+    "if i==5 then", 
+    "if (i==5)", 
+    "if i=5"],
+    answer: "if (i==5)"
+},
+{
+    title: "Inside which HTML element do we put the Java Script?",
+    choices: ["<Js>", 
+    "<scripting>",
+     "<script>", 
+     "javascript"],
+     answer: "<script>"
+},
+{
+    title: "Where is correct place to insert a JavaScript?",
+    choices: [
+    "<head> & <body>",
+    "the <body> section",
+    "the <head> section",
+    "in <footer>"],
+    answer: "<head> & <body>"
+},
+{
+    title: "Which of the following is an example of an array?",
+    choices: [
+    "var = array()",
+    "var = array{}",
+    "var = array[]",
+    "var = array<>"],
+    answer: "var = array[]"
+},
+];
 
+// Timer and test start simultaneously
+timer.addEventListener("click", function () {
+    if (interval === 0) {
+        interval = setInterval(function () {
+            timeLeft--;
+            time.textContent = "Time:" + timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(interval);
+                allDone();
+                time.textContent = "Time's up!";
+            }
+        }, 1000);
+    }
+    render(questionCount);
+});
+//Questions displayed on page
+function render(questionCount) {
+    questionBox.innerHTML = "";
+    elementUl.innerHTML = "";
+    //Loop through questions and answers
+    for (var i = 0; i < questions.length; i++) {
+        var userQuestions = questions[questionCount].title;
+        var userChoices = questions[questionCount].choices;
+        questionBox.textContent = userQuestions;
+    }
+    userChoices.forEach(function (newItem) {
+        var li = document.createElement("li");
+        li.textContent = newItem;
+        questionBox.appendChild(ulCreate);
+        ulCreate.appendChild(li);
+        li.addEventListener("click", (compare));
+    })
 }
+// Compare questions and answers to recognize correct answer
+function compare(event) {
+    var element = event.target;
+    if (element.matches("li")){
+
+        var divCreate = document.createElement("div");
+        divCreate.setAttribute("id", "divCreate");
+       
+        if (element.textContent == questions[questionCount].answer) {
+            score++;
+            divCreate.textContent = "Correct!" + questions[questionCount].answer;
+        } else {
+           timeLeft = timeLeft - penalty;
+            divCreate.textContent = "Wrong! The correct answer is:  " + questions[questionCount].answer;
+        }
+    } questionCount++;
+
+    if (questionCount >= questions.length){
+        //The end page will attached to page
+        finished();
+        divCreate.textContent = "End!" + " " + "Your score is " + score + "/" + questions.length + " Correct!";
+    } else {
+        render(questionCount);
+    }
+    questionBox.appendChild(divCreate);
+}
+function finished() {
+    questionBox.innerHTML = "";
+    time.innerHTML = "";
+
+    //After finished test
+    var h1Element = document.createElement("h1Element");
+    h1Element.setAttribute("id", "h1Element");
+    h1Element.textContent = "You are done!"
+    
+    questionBox.appendChild(h1Element);
+
+    //paragraph
+    var pElement = document.createElement("p");
+    pElement.setAttribute("id", "pElement");
+
+    questionBox.appendChild(pElement);
+    //time left combined with score
+    if (secondsLeft >= 0) {
+        var timeLeft2 = secondsLeft;
+        var p2Element = document.createElement("p");
+        clearInterval(interval);
+        pElement.textContent = "Your score is: " + timeLeft2;
+
+        questionBox.appendChild(p2Element);
+    }
+    var labelElement = document.createElement("label");
+    labelElement.setAttribute("id", "labelElement");
+    labelElement.textContent = "Enter your initials: ";
+
+    questionBox.appendChild(labelElement);
+
+    //submit button
+    var submitButton = document.createElement("button");
+    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("id", "Submit");
+    submitButton.textContent = "Submit";
+
+    questionBox.appendChild(submitButton);
+
+    //initials
+    submitButton.addEventListener("click", function () {
+        var initials = createInput.value;
+        if (initials === null) ;
+        else {
+            var totalScore = {
+                initials: initials,
+                score: timeLeft2
+            }
+            var score = localStorage.getItem("score");
+            if (score === null) {
+                score = [];
+            } else {
+                score = JSON.parse(score);
+            }
+            score.push(totalScore);
+            var newScore = JSON.stringify(score);
+            localStorage.setItem("score", newScore);
+            
+            window.location.replace("./index.html");
+        }
+
+    });
+}
+
+
+
+// start_quiz_btn.addEventListener('click', function(){submit_btn.display} )
+// function(questionsSection){
+

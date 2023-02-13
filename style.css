@@ -86,7 +86,7 @@ ul{
     display: none;
 }
 .show-highscores{
-    /* display: none; */
+    display: none;
 }
 .show-highscores, ol{
     border: 2px lightgray;
