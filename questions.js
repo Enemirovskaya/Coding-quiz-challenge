@@ -1,9 +1,9 @@
 var topBox = document.getElementById("outterBox");
 // var startQuiz = document.getElementbyId("startQuiz");
 // var timer = document.querySelector("startQuiz");
-var questionBox = document.getElementById("questionsBox");
+// var questionBox = document.getElementById("questionsBox");
 
-var finishedSection = document.getElementById("finished-section");
+// var finishedSection = document.getElementById("finished-section");
 // var showScore = documrnt.getElementById("show-highscore");
 
 var elementUl = document.createElement("ul");
@@ -98,42 +98,52 @@ function render(questionCount) {
         questionBox.textContent = userQuestions;
     }
     userChoices.forEach(function (newItem) {
-        var li = document.createElement("li");
-        li.textContent = newItem;
+        var button = document.createElement("button");
+        button.textContent = newItem;
         questionBox.appendChild(elementUl);
-        elementUl.appendChild(li);
-        li.addEventListener("click", (compare));
+        elementUl.appendChild(button);
+        button.addEventListener("click", (compare));
     })
 }
 // Compare questions and answers to recognize correct answer
 function compare(event) {
     var element = event.target;
-    if (element.matches("li")){
+    if (element.matches("button")){
 
-        var divCreate = document.createElement("div");
+        var divCreate = document.createElement("p");
         divCreate.setAttribute("id", "divCreate");
        
         if (element.textContent == questions[questionCount].answer) {
             score++;
             divCreate.textContent = "Correct!" + questions[questionCount].answer;
+           
         } else {
            timeLeft = timeLeft - penalty;
             divCreate.textContent = "Wrong! The correct answer is:  " + questions[questionCount].answer;
+            
         }
     } questionCount++;
-
+   
     if (questionCount >= questions.length){
         //The end page will attached to page
+        questionBox.innerHTML ="";
         finished();
-        divCreate.textContent = "End!" + " " + "Your score is " + score + "/" + questions.length + " Correct!";
+        // divCreate.textContent = "End!" + " " + "Your score is " + score + "/" + questions.length + " Correct!";
+
     } else {
+        questionBox.append(divCreate);
+
         render(questionCount);
     }
-    questionBox.appendChild(divCreate);
+    
 }
 function finished() {
     questionBox.innerHTML = "";
-    time.innerHTML = "";
+    // time.innerHTML = "";
+
+    var endMessage= document.createElement("p");
+    endMessage.textContent = "End!" + " " + "Your score is " + score + "/" + questions.length + " Correct!";
+    questionBox.append(endMessage)
 
     //After finished test
     var h1Element = document.createElement("h1Element");
@@ -148,13 +158,13 @@ function finished() {
 
     questionBox.appendChild(pElement);
     //time left combined with score
-    if (secondsLeft >= 0) {
-        var timeLeft2 = secondsLeft;
-        var p2Element = document.createElement("p");
+    if (timeLeft >= 0) {
+        // var timeLeft2 = timeLeft;
+        // var p2Element = document.createElement("p");
         clearInterval(interval);
-        pElement.textContent = "Your score is: " + timeLeft2;
+        pElement.textContent = "Your score is: " + timeLeft + score;
 
-        questionBox.appendChild(p2Element);
+        questionBox.append(pElement);
     }
     var labelElement = document.createElement("label");
     labelElement.setAttribute("id", "labelElement");
@@ -177,7 +187,7 @@ function finished() {
         else {
             var totalScore = {
                 initials: initials,
-                score: timeLeft2
+                score: timeLeft+score
             }
             var score = localStorage.getItem("score");
             if (score === null) {

@@ -1,30 +1,15 @@
 # 04 Web APIs: Code Quiz
 
-This is a quiz application using HTML, CSS, and Javascript. This application emphasizes the use of Javascript to provide quiz questions and collect user data to determine whether the answers to a question are correct, this then generates a score and appends a final page of results from the user data.
+This is a quiz application using HTML, CSS, and Javascript.  Timed quiz with 5 questions that the user has 4 multiple choice answers to choose from.  The score the user receives is the final time remaining at the time if answering the last questions, however every wrong answer deducts 10 seconds from the timer. The game also records the users score withing a high score page that will retain the collection of local high scores until cleared.
+Once click the button start Quiz, quiz will begin, Once User Answers all the questions, quiz will be anded.
+PS: Once choice made if incorrect answer, correct one will show up under the choices.
 
-This project has been deployed to GitHub Pages. To get this project up and running, you can follow the deployment link. Or, download the sources files to use this as a template.
 
+## Screenshot
 
-## User Story
+![Screenshot of End Quiz.](./Screenshot_20230218_021801.png)
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## URL of deployed application
 
-## Acceptance Criteria
+URL :  [Deployed Application](https://enemirovskaya.github.io/Coding-quiz-challenge/) of Coding-Quiz-Challenge
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
